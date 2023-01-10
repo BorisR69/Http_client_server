@@ -23,8 +23,12 @@ public class MainServer {
             final String name = in.readLine(); // Читаем строку
             // Выводим её на экран вместе с номером порта клиента, с которого пришло соединение
             out.println(String.format("Hi %s, your port is %d", name, clientSocket.getPort()));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+        } finally {
+            System.out.println("closing...");
+            serverSocket.close();
         }
+//        catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
     }
 }
